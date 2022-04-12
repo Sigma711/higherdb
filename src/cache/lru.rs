@@ -83,7 +83,7 @@ impl<K, V> LruInner<K, V> {
   fn detach(&mut self, n: *mut LruEntry<K, V>) {
     unsafe {
       n.next.prev = n.prev;
-      m.prev.next = n.next;
+      n.prev.next = n.next;
     }
   }
   fn attach(&mut self, n: *mut LruEntry<K, V>) {
