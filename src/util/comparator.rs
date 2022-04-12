@@ -11,7 +11,7 @@ pub trait Comparator: Send + Sync + Clone + Default {
   /// `Ordering::Greater` if `a` > `b`
   fn compare(&self, a: &[u8], b: &[u8]) -> Ordering;
 
-  /// The name of the comparator.  Used to check for comparator mismatches
+  /// The name of the comparator. Used to check for comparator mismatches
   /// (i.e., a DB created with one comparator is accessed using a different
   /// comparator.
   /// The client of this package should switch to a new name whenever the
@@ -28,7 +28,7 @@ pub trait Comparator: Send + Sync + Clone + Default {
   /// SSTables.
   fn separator(&self, a: &[u8], b: &[u8]) -> Vec<u8>;
 
-  /// Given a feasible key s, `successor` returns feasible key k such that
+  /// Given a feasible key s, Successor returns feasible key k such that
   /// Compare(k, a) >= 0.
   /// If the key is a run of \xff, returns itself
   fn successor(&self, key: &[u8]) -> Vec<u8>;
