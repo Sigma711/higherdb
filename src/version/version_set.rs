@@ -386,7 +386,7 @@ impl<S: Storage + Clone + 'static, C: Comparator + 'static> VersionSet<S, C> {
 
         // Write to current MANIFEST
         // In origin C++ implementation, the relative part unlocks the global mutex. But we dont need
-        // to do this in wickdb since we split the mutex into several ones for more subtle controlling.
+        // to do this in higherdb since we split the mutex into several ones for more subtle controlling.
         if let Some(writer) = self.manifest_writer.as_mut() {
             match writer.add_record(&encoded_edit) {
                 Ok(()) => {
