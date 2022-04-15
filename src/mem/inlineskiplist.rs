@@ -251,7 +251,7 @@ where
                             // because it is unlikely that lots of nodes are inserted between prev[i] and next[i].
                             let (p, n) = self.find_splice_for_level(&node.key, prev[i], i);
                             if p == n {
-                                // In wickdb, this should never happen
+                                // In higherdb, this should never happen
                                 assert_eq!(i, 0, "Equality can happen only on base level");
                                 ptr::drop_in_place(np);
                                 return;
