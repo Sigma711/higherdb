@@ -196,17 +196,17 @@ impl<S: Storage + Clone, C: Comparator + 'static> HigherDB<S, C> {
 
         let current = versions.current();
         db.delete_obsolete_files(versions)?;
-        let wick_db = HigherDB {
+        let higher_db = HigherDB {
             inner: Arc::new(db),
             shutdown_batch_processing_thread: crossbeam_channel::bounded(1),
             shutdown_compaction_thread: crossbeam_channel::bounded(1),
         };
-        wick_db.process_compaction();
-        wick_db.process_batch();
+        higher_db.process_compaction();
+        higher_db.process_batch();
         // Schedule a compaction to current version for potential unfinished work
         debug!("Try to schedule a compaction on opening db");
-        wick_db.inner.maybe_schedule_compaction(current);
-        Ok(wick_db)
+        higher_db.inner.maybe_schedule_compaction(current);
+        Ok(higher_db)
     }
 
     /// Schedule a compaction for the key range `[begin, end]`.
@@ -405,7 +405,7 @@ pub struct DBImpl<S: Storage + Clone, C: Comparator> {
     env: S,
     internal_comparator: InternalKeyComparator<C>,
     options: Arc<Options<C>>,
-    // The physical path of wickdb
+    // The physical path of higherdb
     db_path: String,
     db_lock: Option<S::F>,
 
@@ -2788,7 +2788,7 @@ mod tests {
                 self.0.compare(a, b)
             }
             fn name(&self) -> &str {
-                return "wickdb.NewComparator";
+                return "higherdb.NewComparator";
             }
             fn separator(&self, a: &[u8], b: &[u8]) -> Vec<u8> {
                 self.0.separator(a, b)

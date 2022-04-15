@@ -44,7 +44,7 @@ impl From<u64> for ValueType {
     }
 }
 
-/// `ParsedInternalKey` represents a internal key used in wickdb.
+/// `ParsedInternalKey` represents a internal key used in higherdb.
 /// A `ParsedInternalKey` can be encoded into a `InternalKey` by `encode()`.
 pub struct ParsedInternalKey<'a> {
     /// The user's normal used key
@@ -283,7 +283,7 @@ impl<C: Comparator> Comparator for InternalKeyComparator<C> {
 
     #[inline]
     fn name(&self) -> &str {
-        "leveldb.InternalKeyComparator"
+        "higherdb.InternalKeyComparator"
     }
 
     fn separator(&self, a: &[u8], b: &[u8]) -> Vec<u8> {
