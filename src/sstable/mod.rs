@@ -397,7 +397,7 @@ mod tests {
         }
 
         fn name(&self) -> &str {
-            "wickdb.ReverseBytewiseComparator"
+            "higherdb.ReverseBytewiseComparator"
         }
 
         fn separator(&self, a: &[u8], b: &[u8]) -> Vec<u8> {
