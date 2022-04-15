@@ -38,12 +38,12 @@ quick_error! {
 }
 
 macro_rules! map_io_res {
-  ($result:expr) => {
-    match $result {
-      Ok(v) => Ok(v),
-      Err(e) => Err(Error::IO(e)),
-    }
-  };
+    ($result:expr) => {
+        match $result {
+            Ok(v) => Ok(v),
+            Err(e) => Err(Error::IO(e)),
+        }
+    };
 }
 
 pub type Result<T> = std::result::Result<T, Error>;
