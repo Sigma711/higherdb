@@ -415,8 +415,9 @@ impl Debug for VersionEdit {
     }
 }
 
-fn get_internal_key(mut src: &mut &[u8]) -> Option<InternalKey> {
-    VarintU32::get_varint_prefixed_slice(&mut src).map(|s| InternalKey::decoded_from(s))
+#[warn(clippy::redundant_closure)]
+fn get_internal_key(src: &mut &[u8]) -> Option<InternalKey> {
+    VarintU32::get_varint_prefixed_slice(src).map(|s| InternalKey::decoded_from(s))
 }
 
 fn get_level(max_levels: usize, src: &mut &[u8]) -> Option<u32> {

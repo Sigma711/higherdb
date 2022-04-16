@@ -1211,6 +1211,7 @@ impl<S: Storage + Clone, C: Comparator> KMergeCore for SSTableIters<S, C> {
         }
     }
 
+    #[warn(clippy::question_mark)]
     fn take_err(&mut self) -> Result<()> {
         for child in self.level0.iter_mut() {
             let status = child.status();
