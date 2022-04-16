@@ -416,6 +416,7 @@ impl<C: Comparator, M: Iterator, T: Iterator> KMergeCore for DBIteratorCore<C, M
         }
     }
 
+    #[warn(clippy::question_mark)]
     fn take_err(&mut self) -> Result<()> {
         for child in self.mem_iters.iter_mut() {
             let status = child.status();
