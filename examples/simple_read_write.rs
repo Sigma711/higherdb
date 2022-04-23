@@ -7,7 +7,7 @@ use std::thread;
 fn main() {
     let mut options = Options::<BytewiseComparator>::default();
     options.logger_level = LevelFilter::Debug;
-    let dir = temp_dir().join("test_wickdb");
+    let dir = temp_dir().join("test_higherdb");
     let mut db = HigherDB::open_db(options, &dir, FileStorage::default()).unwrap();
     let mut handles = vec![];
     let threads = 4;
